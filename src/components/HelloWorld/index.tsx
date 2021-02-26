@@ -6,8 +6,7 @@ export default defineComponent({
 	props: {
 		msg: {
 			type: String,
-			required: true,
-			default: '',
+			required: true
 		},
 	},
 	setup(prop) {
@@ -16,7 +15,7 @@ export default defineComponent({
 
 		return () => (
 			<>
-				<h1>{prop.msg}</h1>
+				<h3>msg: {prop.msg}</h3>
 				<button
 					onClick={() => {
 						count.value++;

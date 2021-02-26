@@ -9,7 +9,7 @@ export default defineComponent({
       <>
         <h1>About</h1>
         <img src={Logo}/>
-        <HelloWord/>
+        <HelloWord msg={'Dynamic '}/>
       </>
     );
   }

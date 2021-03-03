@@ -1,5 +1,7 @@
-﻿import { defineComponent, ref } from 'vue';
+﻿import { defineComponent, PropType, ref } from 'vue';
 import styles from './index.module.scss';
+
+type Fn = () => void;
 
 export default defineComponent({
 	name: 'HelloWorld',
@@ -7,6 +9,10 @@ export default defineComponent({
 		msg: {
 			type: String,
 			required: true
+		},
+		onOk: {
+			type: Function as PropType<Fn>,
+			required: true,
 		},
 	},
 	setup(prop) {

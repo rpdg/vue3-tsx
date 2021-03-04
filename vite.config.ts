@@ -1,4 +1,4 @@
-import legacy from '@vitejs/plugin-legacy';
+// import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
@@ -13,12 +13,14 @@ export default defineConfig({
 	plugins: [
 		vue(),
 		vueJsx(),
-		legacy({
-			targets: ['defaults', 'not IE 11'],
-		}),
+		// legacy({
+		// 	targets: ['defaults', 'not IE 11'],
+		// }),
 	],
-	alias: {
-		'@': pathResolve('./src'),
+	resolve: {
+		alias: {
+			'@': pathResolve('./src'),
+		},
 	},
 	build: {
 		target: 'es6',

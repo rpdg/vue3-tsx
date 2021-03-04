@@ -1,4 +1,5 @@
-﻿import { defineComponent, PropType, ref } from 'vue';
+﻿import { Button } from 'vant';
+import { defineComponent, PropType, ref } from 'vue';
 import styles from './index.module.scss';
 
 type Fn = () => void;
@@ -8,7 +9,7 @@ export default defineComponent({
 	props: {
 		msg: {
 			type: String,
-			required: true
+			required: true,
 		},
 		onOk: {
 			type: Function as PropType<Fn>,
@@ -18,17 +19,17 @@ export default defineComponent({
 	setup(prop) {
 		const count = ref(0);
 
-
 		return () => (
 			<>
 				<h3>msg: {prop.msg}</h3>
-				<button
+				<Button
+					type='primary'
 					onClick={() => {
 						count.value++;
 					}}
 				>
 					count is: {count.value}
-				</button>
+				</Button>
 				<p class={styles.code}>
 					Edit <code>components/HelloWorld.tsx</code> to test hot module replacement.
 				</p>

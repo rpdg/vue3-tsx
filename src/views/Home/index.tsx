@@ -7,12 +7,14 @@ export default defineComponent({
 	setup() {
 		const store = useStore();
 
-		const show = ref(false);
-		const text = ref('inited text');
+		const showRef = ref(false);
+		let text = 'some text here';
+		const textRef = ref(text);
+		const resultTextRef = ref(text);
 
 		const showPopup = () => {
 			// text.value = ;
-			show.value = true;
+			showRef.value = true;
 		};
 
 		return () => (
@@ -20,14 +22,23 @@ export default defineComponent({
 				<h1>Home2</h1>
 				<h2>{store.state.title}</h2>
 
-				<div style='border:1px solid gray; min-width:200px; font-size:1.5em; line-height:1.5em; margin: 1em; padding:0.2em;' onClick={showPopup}>
-					{text.value}
+				<div
+					style='word-break: break-all;border:1px solid gray; min-width:200px; font-size:1.5em; line-height:1.5em; margin: 1em; padding:0.2em;'
+					onClick={showPopup}
+				>
+					{resultTextRef.value}
 				</div>
 
 				<TextareaEmojiPicker
+					// @ts-ignore
+					onCommit={(val: string) => {
+						resultTextRef.value = val;
+					}}
+					textLimit={50}
+					textRows={2}
 					v-models={[
-						[show.value, 'show'],
-						[text.value, 'textareaValue'],
+						[showRef.value, 'show'],
+						[textRef.value, 'textValue'],
 					]}
 				/>
 			</>

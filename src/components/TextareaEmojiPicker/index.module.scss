@@ -3,17 +3,19 @@
 	display: inline-block;
 	width: 100%;
 	transition: height 0.2s;
-	background-color: #eee;
 
 	.textarea {
+		resize: none;
+		background-color: #eee;
 		padding: 0.5rem 1rem;
 		margin: 5px;
 		border-radius: 1rem;
 		border: 1px solid #ddd;
-		width: 18rem;
+		box-shadow: 0 0 3px #ddd inset;
+		width: 16rem;
 		// height: 12rem;
 		outline: none;
-		font-size: 1.2rem;
+		font-size: 1rem;
 
 		&:focus {
 			// box-shadow: 0 0 0 3px rgba(0,0,0, 0.1);
@@ -22,15 +24,36 @@
 	}
 }
 
-.textCount{
+.textCount {
 	position: absolute;
-    top: 2.5rem;
-    right: 1rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
+	top: 0.5rem;
+	left: 20rem;
+	// width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	color: #ccc;
+}
+.commitButton {
+	color: #48b319;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: all 0.2s;
+    /* float: right; */
+    /* margin-top: -1em; */
+    /* padding-right: 1em; */
+    /* position: relative; */
+    padding-top: -5px;
+    display: inline-block;
+    /* padding-bottom: 5px; */
+	vertical-align: bottom;
+    margin-left: 1em;
+    height: 2em;
+	border: none;
+    background-color: transparent;
+	padding: unset;
+
+	&:disabled{
+		color: #87ca6e;
+	}
 }
 
 .emojiWrapper {
@@ -40,7 +63,7 @@
 .emojiInvoker {
 	position: absolute;
 	top: 0.5rem;
-	right: 1rem;
+	left: 16.5rem;
 	width: 1.5rem;
 	height: 1.5rem;
 	border-radius: 50%;

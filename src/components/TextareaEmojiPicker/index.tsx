@@ -1,23 +1,33 @@
 ﻿import { Popup } from 'vant';
-import { defineComponent, onMounted, ref, watch } from 'vue';
+import { defineComponent, nextTick, onMounted, ref, watch } from 'vue';
 import emojis from './emojis';
 import styles from './index.module.scss';
 
 export default defineComponent({
 	props: {
-		value: String,
-		show: Boolean,
+		textareaValue: {
+			type: String,
+			required: false,
+			default: '',
+		},
+		show: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
 	},
+	name: 'TextareaEmojiPicker',
 	setup(props, { emit, attrs, slots }) {
 		let refTextarea = ref<HTMLTextAreaElement>();
 
 		const showPopup = ref(false);
 		const showDuration = ref(0.3);
 		const showEmoji = ref(false);
+		const maxLength = 20;
 
 		onMounted(() => {
 			let textarea = refTextarea.value as HTMLTextAreaElement;
-			console.log(textarea);
+
 			textarea.addEventListener('focus', () => {
 				showEmoji.value = false;
 			});
@@ -26,19 +36,25 @@ export default defineComponent({
 		watch(
 			() => props.show,
 			(value, prevValue) => {
-				// alert(value);
 				showPopup.value = value;
 			}
 		);
 
 		function handleInput(e: InputEvent) {
-			console.log(e);
-			emit('update:value', (e.target as HTMLTextAreaElement).value);
+			let textarea = e.target as HTMLTextAreaElement;
+			let txt = textarea.value;
+			if (txt.length > maxLength) {
+				// console.warn(txt.length);
+				txt = txt.substr(0, maxLength);
+				textarea.value = txt;
+			}
+
+			// console.log(e);
+			emit('update:textareaValue', txt);
 		}
 
 		function handleOpened() {
 			showDuration.value = 0;
-			// console.log(refTextarea.value);
 			(refTextarea.value as HTMLTextAreaElement).focus();
 		}
 
@@ -54,7 +70,6 @@ export default defineComponent({
 		function renderEmojis(emojiCategoryName: keyof typeof emojis): JSX.Element[] {
 			let spans: JSX.Element[] = [];
 			Object.keys(emojis[emojiCategoryName]).forEach((emojiName) => {
-				// @ts-ignore
 				let emoji: string = emojis[emojiCategoryName][emojiName];
 				spans.push(
 					<span
@@ -72,22 +87,30 @@ export default defineComponent({
 		function displayEmojis(evt: MouseEvent) {
 			evt.stopImmediatePropagation();
 			// console.log(evt);
-			showEmoji.value = true;
+			if (showEmoji.value) {
+				showEmoji.value = false;
+				nextTick(() => {
+					const textarea = refTextarea.value as HTMLTextAreaElement;
+					textarea.focus();
+				});
+			} else {
+				showEmoji.value = true;
+			}
 		}
 
 		function addEmoji(emoji: string) {
 			// debugger;
 			const textarea = refTextarea.value as HTMLTextAreaElement;
-			// const cursorPosition = textarea.selectionEnd;
+			const cursorPosition = textarea.selectionEnd;
 			const start = textarea.value.substring(0, textarea.selectionStart);
 			const end = textarea.value.substring(textarea.selectionStart);
 			textarea.value = start + emoji + end;
-			textarea.dispatchEvent(new InputEvent('change'))
+			textarea.dispatchEvent(new InputEvent('change'));
 			// this.$emit('input', text);
 			// textarea.focus();
-			// this.$nextTick(() => {
-			// 	textarea.selectionEnd = cursorPosition + emoji.length;
-			// });
+			nextTick(() => {
+				textarea.selectionEnd = cursorPosition + emoji.length;
+			});
 		}
 
 		return () => (
@@ -105,13 +128,17 @@ export default defineComponent({
 					<textarea
 						ref={refTextarea}
 						class={styles.textarea}
-						v-model={props.value}
+						value={props.textareaValue}
 						rows={2}
+						style={{ height: `${2 * 1.5}em` }}
 						// @ts-ignore
 						onInput={handleInput}
 						// @ts-ignore
 						onChange={handleInput}
 					></textarea>
+
+					<div class={styles.textCount}>{props.textareaValue.length}</div>
+
 					<div class={styles.emojiInvoker} onClick={displayEmojis}>
 						<svg height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'>
 							<path d='M0 0h24v24H0z' fill='none' />

@@ -1,14 +1,20 @@
-﻿export default {
-	'Frequently used': {
+﻿type Emojis = {
+	[catagory: string] :{
+		[key: string] : string;
+	}
+};
+
+const emojis: Emojis = {
+	常用: {
 		thumbs_up: '👍',
 		'-1': '👎',
-		sob: '😭',
+		blush: '😊',
+		joy: '😂',
 		confused: '😕',
 		neutral_face: '😐',
-		blush: '😊',
 		heart_eyes: '😍',
 	},
-	People: {
+	人类: {
 		smile: '😄',
 		smiley: '😃',
 		grinning: '😀',
@@ -188,7 +194,7 @@
 		speech_balloon: '💬',
 		footprints: '👣',
 	},
-	Nature: {
+	自然界: {
 		dog: '🐶',
 		wolf: '🐺',
 		cat: '🐱',
@@ -269,7 +275,7 @@
 		rainbow: '🌈',
 		ocean: '🌊',
 	},
-	Objects: {
+	物件: {
 		bamboo: '🎍',
 		gift_heart: '💝',
 		dolls: '🎎',
@@ -473,7 +479,7 @@
 		tomato: '🍅',
 		corn: '🌽',
 	},
-	Places: {
+	场地: {
 		house: '🏠',
 		house_with_garden: '🏡',
 		school: '🏫',
@@ -540,7 +546,7 @@
 		round_pushpin: '📍',
 		triangular_flag_on_post: '🚩',
 	},
-	Symbols: {
+	符号: {
 		keycap_ten: '🔟',
 		'1234': '🔢',
 		symbols: '🔣',
@@ -647,3 +653,5 @@
 		small_blue_diamond: '🔹',
 	},
 };
+
+export default emojis;

@@ -8,24 +8,26 @@ export default defineComponent({
 		const store = useStore();
 
 		const show = ref(false);
-		const text = ref('');
+		const text = ref('inited text');
 
 		const showPopup = () => {
-			text.value = 'inited text';
+			// text.value = ;
 			show.value = true;
 		};
 
 		return () => (
 			<>
-				<h1>Home</h1>
+				<h1>Home2</h1>
 				<h2>{store.state.title}</h2>
 
-				<div style='border:1px solid gray; width:200px; height:1.5em;' onClick={showPopup}></div>
+				<div style='border:1px solid gray; min-width:200px; font-size:1.5em; line-height:1.5em; margin: 1em; padding:0.2em;' onClick={showPopup}>
+					{text.value}
+				</div>
 
 				<TextareaEmojiPicker
 					v-models={[
 						[show.value, 'show'],
-						[text.value, 'value'],
+						[text.value, 'textareaValue'],
 					]}
 				/>
 			</>

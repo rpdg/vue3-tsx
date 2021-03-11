@@ -2,6 +2,7 @@
 	position: relative;
 	display: inline-block;
 	width: 100%;
+	transition: height 0.2s;
 	background-color: #eee;
 
 	.textarea {
@@ -12,12 +13,24 @@
 		width: 18rem;
 		// height: 12rem;
 		outline: none;
+		font-size: 1.2rem;
 
 		&:focus {
 			// box-shadow: 0 0 0 3px rgba(0,0,0, 0.1);
 			border-color: #aaa;
 		}
 	}
+}
+
+.textCount{
+	position: absolute;
+    top: 2.5rem;
+    right: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .emojiWrapper {
@@ -84,7 +97,8 @@
 	flex: auto;
 }
 .emojiPicker .emojis span {
-	padding: 0.2rem;
+	padding: 0.3rem;
+	font-size: 1.6rem;
 	cursor: pointer;
 	border-radius: 5px;
 }

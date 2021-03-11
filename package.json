@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vuedx-typecheck . && vite build",
     "serve": "vite preview",
-    "vercel":"vercel --prod"
+    "vercel": "vercel --prod"
   },
   "dependencies": {
     "vant": "^3.0.9",

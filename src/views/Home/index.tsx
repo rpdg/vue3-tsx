@@ -34,7 +34,7 @@ export default defineComponent({
 					onCommit={(val: string) => {
 						resultTextRef.value = val;
 					}}
-					textLimit={50}
+					textLimit={20}
 					textRows={2}
 					v-models={[
 						[showRef.value, 'show'],

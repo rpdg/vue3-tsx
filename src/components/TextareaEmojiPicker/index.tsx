@@ -174,23 +174,26 @@ export default defineComponent({
 						onChange={handleInput}
 					></textarea>
 
-					<SmileLogo
-						// @ts-ignore
-						onClick={displayEmojis}
-					/>
-					{calcuCount()}
+					<div class={styles.actionWrapper}>
+						<SmileLogo
+							// @ts-ignore
+							onClick={displayEmojis}
+						/>
 
-					<div v-show={showEmoji.value} class={styles.emojiWrapper}>
-						<div class={styles.emojiPicker}>
-							{Object.keys(emojis).map((category) => (
-								<div key={category}>
-									<h5>{category}</h5>
-									<div class={styles.emojis}>{renderEmojis(category as keyof typeof emojis)}</div>
-								</div>
-							))}
-						</div>
+						{calcuCount()}
+
 					</div>
 				</div>
+						<div class={styles.emojiWrapper} v-show={showEmoji.value}>
+							<div class={styles.emojiPicker}>
+								{Object.keys(emojis).map((category) => (
+									<div key={category}>
+										<h5>{category}</h5>
+										<div class={styles.emojis}>{renderEmojis(category as keyof typeof emojis)}</div>
+									</div>
+								))}
+							</div>
+						</div>
 			</Popup>
 		);
 	},

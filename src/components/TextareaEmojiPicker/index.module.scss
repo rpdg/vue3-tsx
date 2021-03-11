@@ -1,8 +1,8 @@
 ﻿.wrapper {
 	position: relative;
-	display: inline-block;
-	width: 100%;
-	transition: height 0.2s;
+    display: flex;
+    width: 100%;
+    transition: height 0.2s;
 
 	.textarea {
 		resize: none;
@@ -12,7 +12,7 @@
 		border-radius: 1rem;
 		border: 1px solid #ddd;
 		box-shadow: 0 0 3px #ddd inset;
-		width: 16rem;
+		width: 70vw;
 		// height: 12rem;
 		outline: none;
 		font-size: 1rem;
@@ -23,51 +23,43 @@
 		}
 	}
 }
-
+.actionWrapper{
+	flex: 1;
+    margin: 5px;
+}
 .textCount {
-	position: absolute;
-	top: 0.5rem;
-	left: 20rem;
-	// width: 1.5rem;
-	height: 1.5rem;
-	border-radius: 50%;
-	color: #ccc;
+    top: 2rem;
+    right: 6vw;
+    height: 1.5rem;
+    color: #ccc;
+    text-align: center;
 }
 .commitButton {
-	color: #48b319;
+	display: block;
+    color: #48b319;
+    text-align: center;
     font-size: 1.1rem;
     cursor: pointer;
-    /* float: right; */
-    /* margin-top: -1em; */
-    /* padding-right: 1em; */
-    /* position: relative; */
     padding-top: -5px;
-    display: inline-block;
-    /* padding-bottom: 5px; */
-	vertical-align: bottom;
-    margin-left: 1em;
-    height: 2em;
-	border: none;
+    border: none;
     background-color: transparent;
-	padding: unset;
+    padding: unset;
+    width: 100%;
 
 	&:disabled{
 		color: #87ca6e;
 	}
 }
 
-.emojiWrapper {
-	height: 40vh;
-	overflow: scroll;
-}
 .emojiInvoker {
-	position: absolute;
 	top: 0.5rem;
-	left: 16.5rem;
-	width: 1.5rem;
-	height: 1.5rem;
-	border-radius: 50%;
-	cursor: pointer;
+    right: 6vw;
+    /* width: 2rem; */
+    height: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
 	transition: all 0.2s;
 
 	&:hover {
@@ -79,6 +71,10 @@
 	}
 }
 
+.emojiWrapper {
+	height: 40vh;
+	overflow: scroll;
+}
 .emojiPicker {
 	// position: absolute;
 	z-index: 1;

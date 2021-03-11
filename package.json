@@ -4,10 +4,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vuedx-typecheck . && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "vercel":"vercel --prod"
   },
   "dependencies": {
-    "vant": "^3.0.7",
+    "vant": "^3.0.9",
     "vue": "^3.0.6",
     "vue-router": "^4.0.4",
     "vuex": "^4.0.0"

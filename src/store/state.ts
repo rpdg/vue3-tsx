@@ -3,5 +3,5 @@
 };
 
 export const state: State = {
-	title: 'Vue(v3) 与 tsx 的结合~',
+	title: '微信相册评论表情测试',
 };

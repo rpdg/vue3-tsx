@@ -24,6 +24,7 @@ export default defineComponent({
 				<h3>msg: {prop.msg}</h3>
 				<Button
 					type='primary'
+					// @ts-ignore
 					onClick={() => {
 						count.value++;
 					}}
